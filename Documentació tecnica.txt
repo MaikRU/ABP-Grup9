@@ -1,0 +1,46 @@
+Farem un esquema tècnic de com es vol que funcioni el programa sense codi
+
+importem csv (Per llegir l'arxiu)
+Fem la funció per llegir csv com a principal
+llegir el fitxer amb encoding "utf-8" amb el nom d'arxiu
+Crear un bucle per llegir tot el contingut
+
+Fer un altre funció per crear un menú entorn gràfic
+imprimim menú principal
+opcions del programa de l'1-4
+
+Fer una funció per calcular la facturació mensual
+Crida la funció de llegir csv principal
+Crear un bucle per llegir camps i valors del csv
+Fer càlculs sense i amb iva
+Crear increments per fer la suma
+Imprimir resultats
+
+Fer una funció per calcular el stock
+Crida la funció de llegir csv principal
+Crear un bucle per llegir els caps Producte i Estoc_Dispoinible
+Imprimir Resultats
+
+Fer una funció mostrant els 3 millors productes
+Crida la funció de llegir csv principal
+Crear un bucle amb increment per llegir caps
+Fer càlcul dels 3 millors productes
+Imprimir Resultats
+
+Fer funció del funcionament menú
+crear un bucle per les opcions
+Crida la funció mostrar menú
+Opció 1
+retorna funció calcular facturació mensual
+Opció 2
+retorna funció calcular stock disponible
+Opció 3
+retorna funció calcular 3 millors
+Opció 4
+imprimir missatge d'acomiadament
+trencar bucle
+
+Opció "else":
+imprimir missatge d'error
+
+Crida la funció del funcionament del menú
