@@ -64,9 +64,41 @@ def mostrar_stock():
 
     print("\n--- Stock Disponible per a cada producte ---\n")
     for producte, stock in stockd.items():
-        print(producte, stock, "unitats")   
-    
-    
+        print(producte, stock, "unitats")
+
+# Autor - Miguel Rico        
+# Diccionari per acumular la facturació per cada producte
+
+def mostrar_3_millors():
+    # Diccionari per acumular la facturació per cada producte
+    producte_facturacio = {}
+    nom_arxiu_csv = "dades_botiga.csv"
+    lector = lleguir_dades_botiga(nom_arxiu_csv)
+    for i in lector:
+        producte = i["Producte"]
+        quantitat = int(i["Quantitat_Venuda"])
+        preu_unitari = float(i["Preu_Unitari"])
+        # Calcular la facturació per aquesta línia
+        facturacio = quantitat * preu_unitari
+        if producte in producte_facturacio:
+            producte_facturacio[producte] += facturacio
+        else:
+            producte_facturacio[producte] = facturacio
+    # Inicialitzar una llista per als tres millors productes
+    tres_millors = []
+    # Cerca el diccionari per trobar els tres productes amb més facturació
+    for producte, facturacio in producte_facturacio.items():
+        # Afegir el producte actual a la llista
+        tres_millors.append((producte, facturacio))
+        # Ordenar la llista en ordre descendent segons la facturació
+        tres_millors.sort(key=lambda x: x[1], reverse=True)
+        # Mantenir només els tres primers elements a la llista
+        tres_millors = tres_millors[:3]
+
+    print("\n--- Tres productes amb més facturació ---")
+    for producte, facturacio in tres_millors:
+        print(producte,facturacio,"€") 
+
 # Autor - Miguel Rico
 # Funció demana mostrar el "mostrar_menu" i dona la posiblitat de eligir una opció del 1-4
 def menu():
@@ -79,7 +111,7 @@ def menu():
             case "2":
                 mostrar_stock()
             case "3":
-                print("En construccio")
+                mostrar_3_millors()
             case "4":
                 print("Sortin del programa, fins un altre!")
                 break
