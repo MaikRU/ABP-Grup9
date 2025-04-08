@@ -25,8 +25,8 @@ def mostrar_menu():
 #Funció per calcular la facturaió mensual 
 def calcular_facturacio():
     #Preparem el increment del valor perque crearem un "for", el valor començara des de 0
-    total_sense_iva = 0
-    total_amb_iva= 0 
+    total_sense_iva=0
+    total_amb_iva=0 
     #Llegim la funció del csv, per llegir el arxiu 
     nom_arxiu_csv = "dades_botiga.csv"    
     lector=lleguir_dades_botiga(nom_arxiu_csv)
@@ -36,17 +36,36 @@ def calcular_facturacio():
         preu_unitari = float(i["Preu_Unitari"])
         iva_percent = float(i["IVA"]) / 100
         subtotal = quantitat * preu_unitari
-        iva= subtotal * iva_percent
-        total= subtotal + iva
+        iva=subtotal * iva_percent
+        total=subtotal + iva
         #Fem el increment desde 0 amb subtotal i el total 
         total_sense_iva += subtotal 
         total_amb_iva += total
-        round_senseiva=round(total_sense_iva,2)
+        round_sense_iva=round(total_sense_iva,2)
         round_amb_iva=round(total_amb_iva,2)
     #Mostra un titol i el valor total amb un "round" per a per arrodonir la xifra 
     print("\n===Facturació mensual===")
-    print("Aquest mes s'ha facturat sense IVA:", round_senseiva, "€")
+    print("Aquest mes s'ha facturat sense IVA:", round_sense_iva, "€")
     print("Total amb IVA", round_amb_iva, "€")
+
+# Autor - Santiago Pirela i Miguel Rico
+#Creem la funcio per calcular el stock disponible
+def mostrar_stock():
+    stockd= {}
+    nom_arxiu_csv = "dades_botiga.csv"
+    lector=lleguir_dades_botiga(nom_arxiu_csv)
+    for i in lector:
+        producte = i ["Producte"]
+        stock = int(i["Estoc_Disponible"])
+        if producte in stockd:
+            stockd[producte] += stock
+        else:
+            stockd[producte] =stock
+
+    print("\n--- Stock Disponible per a cada producte ---\n")
+    for producte, stock in stockd.items():
+        print(producte, stock, "unitats")   
+    
     
 # Autor - Miguel Rico
 # Funció demana mostrar el "mostrar_menu" i dona la posiblitat de eligir una opció del 1-4
@@ -58,7 +77,7 @@ def menu():
             case "1":
                 calcular_facturacio()
             case "2":
-                print("En construccio")
+                mostrar_stock()
             case "3":
                 print("En construccio")
             case "4":
