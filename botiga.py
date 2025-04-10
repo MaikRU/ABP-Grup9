@@ -66,7 +66,7 @@ def mostrar_stock():
     for producte, stock in stockd.items():
         print(producte, stock, "unitats")
 
-# Autor - Miguel Rico        
+# Autor - Pedro Zamora i Miguel Rico        
 # Diccionari per acumular la facturació per cada producte
 
 def mostrar_3_millors():
@@ -94,10 +94,9 @@ def mostrar_3_millors():
         tres_millors.sort(key=lambda x: x[1], reverse=True)
         # Mantenir només els tres primers elements a la llista
         tres_millors = tres_millors[:3]
-
     print("\n--- Tres productes amb més facturació ---")
     for producte, facturacio in tres_millors:
-        print(producte,facturacio,"€") 
+        print(producte,facturacio,"€")
 
 # Autor - Miguel Rico
 # Funció demana mostrar el "mostrar_menu" i dona la posiblitat de eligir una opció del 1-4
